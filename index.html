@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#090807">
+<meta name="description" content="diner Zen BAR & DINING">
+<title>diner Zen | BAR & DINING</title>
+<style>
+:root{
+  --bg:#090807; --panel:#12100d; --gold:#d7ad67; --cream:#f4ead6;
+  --muted:#b9a98f; --line:rgba(215,173,103,.45);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(circle at 50% 0,#2a1c0d 0,#090807 38%,#050504 100%);
+color:var(--cream);font-family:Georgia,"Yu Mincho",serif;line-height:1.75}
+a{color:inherit;text-decoration:none}
+img{display:block;width:100%;height:auto}
+.wrap{width:min(100%,720px);margin:auto}
+.hero{min-height:100svh;position:relative;display:flex;align-items:end;overflow:hidden;background:#000}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.2) 45%,rgba(0,0,0,.9))}
+.hero-bg{position:absolute;inset:0;background:url("assets/counter.jpg") center/cover;filter:brightness(.55);animation:slowZoom 12s ease-in-out infinite alternate}
+@keyframes slowZoom{from{transform:scale(1)}to{transform:scale(1.06)}}
+.hero-inner{position:relative;z-index:2;width:100%;padding:34px 22px 46px;text-align:center}
+.logo{font-size:clamp(58px,18vw,110px);line-height:.78;font-weight:400;letter-spacing:-.04em;text-shadow:0 0 24px rgba(215,173,103,.25)}
+.logo small{display:block;font-size:.26em;letter-spacing:.25em;margin-bottom:15px}
+.tag{letter-spacing:.34em;font-size:12px;color:var(--gold);margin-top:20px}
+.scroll{display:inline-block;margin-top:28px;border:1px solid var(--line);padding:7px 17px;font-size:12px;letter-spacing:.16em;animation:pulse 2.2s infinite}
+@keyframes pulse{50%{opacity:.45}}
+.nav{position:sticky;top:0;z-index:10;background:rgba(7,6,5,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav-inner{display:flex;overflow:auto;scrollbar-width:none}
+.nav a{flex:0 0 auto;padding:11px 15px;font-size:12px;letter-spacing:.12em;color:#d8c9ae}
+.nav a:first-child{color:var(--gold)}
+section{padding:58px 20px}
+.kicker{font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase}
+h2{margin:6px 0 24px;font-size:34px;line-height:1.1;font-weight:400}
+h2 span{display:block;font-size:13px;color:var(--muted);letter-spacing:.2em;margin-top:7px}
+.card{background:linear-gradient(145deg,rgba(34,27,18,.92),rgba(12,10,8,.96));border:1px solid var(--line);box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.copy{padding:22px}
+.goldline{height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:20px 0}
+.about-photo{aspect-ratio:16/10;object-fit:cover}
+.menu-group{margin-bottom:32px}
+.menu-head{display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:6px}
+.menu-head h3{font-size:28px;margin:0;font-weight:400}
+.menu-row{display:flex;justify-content:space-between;gap:15px;padding:11px 4px;border-bottom:1px solid rgba(215,173,103,.18);font-size:15px}
+.menu-row b{font-weight:400;white-space:nowrap}
+.feature{margin:12px 0 18px;border:1px solid var(--gold);padding:14px 15px;font-size:16px;text-align:center}
+.note{color:var(--muted);font-size:13px}
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.gallery figure{margin:0;background:#111;border:1px solid rgba(215,173,103,.22);overflow:hidden}
+.gallery img{aspect-ratio:1/1;object-fit:cover;transition:transform .5s}
+.gallery figure:active img{transform:scale(1.03)}
+figure.wide{grid-column:1/-1}
+figure.wide img{aspect-ratio:16/9}
+figcaption{padding:8px 9px;font-size:11px;color:var(--muted)}
+.notice{display:grid;gap:10px}
+.notice-item{padding:15px;border:1px solid rgba(215,173,103,.3);background:#0e0c09}
+.notice-item strong{display:block;color:var(--gold);font-size:15px;margin-bottom:4px}
+.access-box{padding:20px;text-align:center}
+.secret{font-size:20px;color:var(--gold);margin:10px 0}
+.tel{display:block;font-size:28px;color:var(--cream);letter-spacing:.04em;margin:8px 0}
+.cta{display:block;text-align:center;padding:14px;margin-top:15px;border:1px solid var(--gold);background:linear-gradient(90deg,#2b1c0c,#4a3016);font-size:14px;letter-spacing:.12em}
+footer{text-align:center;padding:42px 20px 55px;border-top:1px solid var(--line);color:#8f826d;font-size:11px;letter-spacing:.12em}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+.reveal.show{opacity:1;transform:none}
+@media (min-width:650px){section{padding-left:28px;padding-right:28px}.gallery{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="logo"><small>diner</small>Zen</div>
+    <div class="tag">BAR &amp; DINING</div>
+    <a class="scroll" href="#about">ENTER</a>
+  </div>
+</header>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#home">HOME</a><a href="#about">ABOUT</a><a href="#menu">MENU</a>
+    <a href="#gallery">GALLERY</a><a href="#membership">MEMBERSHIP</a><a href="#access">ACCESS</a>
+  </div>
+</nav>
+
+<section id="about" class="reveal">
+  <div class="kicker">About</div>
+  <h2>diner Zen<span>BAR &amp; DINING</span></h2>
+  <div class="card">
+    <img class="about-photo" src="assets/interior.jpg" alt="diner Zen 店内">
+    <div class="copy">
+      <p>音楽、アニメ、声の世界に関わる方々や、その仲間たちが集う、隠れ家的なBAR。</p>
+      <p>美味しいお酒と旬の料理、そして落ち着いた大人の時間をお楽しみください。</p>
+    </div>
+  </div>
+</section>
+
+<section id="menu" class="reveal">
+  <div class="kicker">Menu</div>
+  <h2>MENU<span>メニュー</span></h2>
+  <div class="card copy">
+    <div class="menu-group">
+      <div class="menu-head"><h3>FOOD</h3></div>
+      <div class="feature">仕入れにより時価</div>
+      <p class="note">その日仕入れた旬の食材でご用意します。詳しくはスタッフまで。</p>
+      <div class="feature">オーナーの隠しツマミあり</div>
+      <p class="note">その日の気分で登場する、オーナーこだわりの一品。</p>
+    </div>
+    <div class="goldline"></div>
+    <div class="menu-group">
+      <div class="menu-head"><h3>DRINK</h3></div>
+      <div class="menu-row"><span>ビール各種</span><b>600円～</b></div>
+      <div class="menu-row"><span>ワイン各種</span><b>600円～</b></div>
+      <div class="menu-row"><span>ウイスキー各種</span><b>600円～</b></div>
+      <div class="menu-row"><span>ブランデー各種</span><b>600円～</b></div>
+      <div class="menu-row"><span>古酒各種</span><b>1,000円～</b></div>
+      <div class="menu-row"><span>日本酒各種</span><b>800円～</b></div>
+      <div class="menu-row"><span>ソフトドリンク各種</span><b>500円～</b></div>
+      <div class="menu-row"><span>オーナーの隠し酒各種</span><b>時価</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="gallery" class="reveal">
+  <div class="kicker">Gallery</div>
+  <h2>GALLERY<span>ギャラリー</span></h2>
+  <div class="gallery">
+    <figure class="wide"><img src="assets/counter.jpg" alt="メインカウンター"><figcaption>MAIN COUNTER</figcaption></figure>
+    <figure><img src="assets/exterior.jpg" alt="diner Zen 外観"><figcaption>ENTRANCE</figcaption></figure>
+    <figure><img src="assets/interior.jpg" alt="店内"><figcaption>INTERIOR</figcaption></figure>
+    <figure><img src="assets/shikishi1.jpg" alt="店内の色紙"><figcaption>AUTOGRAPH</figcaption></figure>
+    <figure><img src="assets/shikishi2.jpg" alt="店内の色紙"><figcaption>AUTOGRAPH</figcaption></figure>
+    <figure><img src="assets/shikishi3.jpg" alt="店内の色紙"><figcaption>AUTOGRAPH</figcaption></figure>
+  </div>
+</section>
+
+<section id="membership" class="reveal">
+  <div class="kicker">Membership</div>
+  <h2>MEMBERSHIP<span>会員制</span></h2>
+  <div class="card copy">
+    <p>当店は会員制となっております。</p>
+    <p>ご入会は<strong>「会員からの紹介」または「店関係からの紹介」</strong>のみとさせていただいております。</p>
+    <div class="goldline"></div>
+    <p>音楽・アニメ・声優関係など、さまざまな方が集まる場のため、店内で知り得た会話・写真・情報などの外部への漏洩は固くお断りいたします。</p>
+  </div>
+</section>
+
+<section id="access" class="reveal">
+  <div class="kicker">Access</div>
+  <h2>ACCESS<span>アクセス</span></h2>
+  <div class="card access-box">
+    <img src="assets/exterior.jpg" alt="diner Zen 外観">
+    <p class="secret">所在地は非公開</p>
+    <p>場所の詳細は、お電話でお問い合わせください。</p>
+    <p>最寄り駅：<strong>東京・中野駅</strong></p>
+    <p>営業時間：<strong>21:00 ～ 朝方まで</strong></p>
+    <a class="tel" href="tel:09055864488">090-5586-4488</a>
+    <a class="cta" href="tel:09055864488">電話で場所を確認する</a>
+  </div>
+</section>
+
+<section class="reveal">
+  <div class="kicker">Notice</div>
+  <h2>NOTICE<span>ご案内・注意事項</span></h2>
+  <div class="notice">
+    <div class="notice-item"><strong>チャージ料金</strong>お一人様につき 2,000円</div>
+    <div class="notice-item"><strong>会員制</strong>会員からの紹介、または店関係からの紹介のみ。</div>
+    <div class="notice-item"><strong>他言厳禁</strong>店内での会話・写真・情報などの外部への漏洩は固くお断りいたします。</div>
+    <div class="notice-item"><strong>撮影・SNS</strong>店内での撮影・録音・SNSへの投稿は、スタッフの許可がある場合を除きご遠慮ください。</div>
+    <div class="notice-item"><strong>喫煙</strong>店内での喫煙については、周りのお客様へのご配慮をお願いいたします。</div>
+    <div class="notice-item"><strong>マナー</strong>すべてのお客様に心地よくお過ごしいただくため、節度あるご利用をお願いいたします。</div>
+  </div>
+</section>
+
+<section class="reveal" id="contact">
+  <div class="kicker">Contact</div>
+  <h2>CONTACT<span>お問い合わせ</span></h2>
+  <div class="card access-box">
+    <p>場所・営業状況などのお問い合わせはお電話で。</p>
+    <a class="tel" href="tel:09055864488">090-5586-4488</a>
+    <a class="cta" href="tel:09055864488">CALL diner Zen</a>
+  </div>
+</section>
+
+<footer>diner Zen BAR &amp; DINING<br><br>© diner Zen</footer>
+</div>
+
+<script>
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show'); });
+},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
