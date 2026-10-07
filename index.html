@@ -1,34 +1,198 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#080604">
 <title>diner Zen | BAR & DINING</title>
 <style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#080604;color:#fff;font-family:"Times New Roman","Yu Mincho",serif}a{color:inherit;text-decoration:none}img,video{display:block;max-width:100%}
-.hero{position:relative;width:100%;height:100svh;min-height:560px;overflow:hidden;background:#000}.hero video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center}.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.18),rgba(0,0,0,.05) 45%,rgba(0,0,0,.72) 100%)}
-.nav{position:absolute;z-index:4;top:0;left:0;right:0;display:flex;justify-content:center;gap:clamp(18px,4vw,55px);padding:20px 14px;border-bottom:1px solid rgba(230,180,80,.35);background:rgba(0,0,0,.35);backdrop-filter:blur(5px);font-size:13px;letter-spacing:.18em}.nav a{white-space:nowrap}
-.heroContent{position:absolute;z-index:3;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;text-align:center;padding:0 18px 52px}.brand small{display:block;font-size:18px;letter-spacing:.35em}.brand strong{display:block;font-size:clamp(72px,18vw,145px);line-height:.8;font-style:italic;text-shadow:0 3px 20px #000}.tag{margin:25px 0;color:#ead29e;letter-spacing:.25em}.enter{display:inline-flex;width:220px;height:52px;align-items:center;justify-content:center;border:1px solid #d8ad5c;background:rgba(0,0,0,.45);letter-spacing:.3em}
-.section{padding:70px 16px}.inner{max-width:1050px;margin:auto}.title{text-align:center;color:#e0b45f;letter-spacing:.25em;font-size:12px}.section h2{text-align:center;font-size:40px;font-weight:normal;letter-spacing:.15em;margin:8px 0 35px}.lead{max-width:760px;margin:0 auto 34px;text-align:center;color:#ddd1c0;font-size:15px;line-height:2}.menu-img{width:min(820px,100%);margin:0 auto;border:1px solid rgba(216,173,92,.55)}
-.gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.gallery figure{margin:0;border:1px solid rgba(216,173,92,.45);background:#0e0b08}.gallery img{width:100%;aspect-ratio:1/1;object-fit:cover}.gallery figcaption{padding:10px;text-align:center;color:#d8bd89;font-size:12px;letter-spacing:.1em}.wide{grid-column:1/-1}.wide img{aspect-ratio:16/8;object-fit:cover}
-.access{background:#0c0a08}.access-box{max-width:760px;margin:auto;border:1px solid #4a3921;background:rgba(0,0,0,.25)}.row{padding:19px 22px;border-bottom:1px solid #2d2418;line-height:1.8}.row:last-child{border:0}.row b{display:block;color:#d7ad63;font-size:11px;letter-spacing:.22em;margin-bottom:3px}.row span{color:#eee4d7}.tel{font-size:20px;letter-spacing:.08em}.footer{text-align:center;padding:40px 20px 55px;color:#9e8968;font-size:12px;border-top:1px solid rgba(216,173,92,.25)}
-@media(max-width:650px){.hero{height:100svh;min-height:0}.hero video{object-fit:cover;object-position:center center}.nav{gap:0;justify-content:space-around;padding:11px 6px;font-size:9px;letter-spacing:.05em}.heroContent{padding:0 14px 34px}.brand small{font-size:14px}.brand strong{font-size:clamp(62px,20vw,100px)}.tag{font-size:10px;margin:18px 0}.enter{width:190px;height:48px}.section{padding:52px 12px}.section h2{font-size:30px;margin-bottom:28px}.lead{font-size:13px}.gallery{grid-template-columns:1fr 1fr;gap:8px}.wide{grid-column:1/-1}.gallery figcaption{font-size:10px;padding:8px 4px}.row{padding:16px}.tel{font-size:18px}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#050403;color:#fff;font-family:"Times New Roman","Yu Mincho",serif}
+.hero{position:relative;height:100svh;min-height:620px;overflow:hidden}
+.slide{position:absolute;inset:0;background:center/cover no-repeat;opacity:0;transform:scale(1.04);transition:opacity 1.8s ease,transform 7s ease}
+.slide.active{opacity:1;transform:scale(1)}
+.slide:after{content:"";position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,.25),transparent 45%,rgba(0,0,0,.72))}
+.heroContent{position:absolute;z-index:3;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:flex-end;padding:0 20px calc(42px + env(safe-area-inset-bottom));text-align:center}
+.brand{margin-bottom:18px;text-shadow:0 3px 18px #000}
+.brand small{display:block;font-size:18px;letter-spacing:.3em;margin-left:.3em}
+.brand strong{display:block;font-size:clamp(62px,19vw,100px);line-height:.82;font-style:italic}
+.enter{width:min(230px,72vw);height:54px;border:1px solid rgba(255,211,132,.9);display:flex;align-items:center;justify-content:center;color:#fff;text-decoration:none;letter-spacing:.3em;background:rgba(0,0,0,.38);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+.enter:active{transform:scale(.97)}
+.dots{display:flex;gap:8px;margin-top:19px}
+.dot{width:7px;height:7px;border-radius:10px;background:#777}
+.dot.on{width:25px;background:#fff}
+.scroll{position:absolute;z-index:4;right:15px;top:20px;writing-mode:vertical-rl;font-size:10px;letter-spacing:.25em;opacity:.65}
+
+.content{background:#080604}
+.imageSection{width:100%;line-height:0}
+.imageSection img{display:block;width:100%;height:auto}
+.back{display:block;text-align:center;padding:28px 20px 50px;color:#d9b36c;text-decoration:none;letter-spacing:.18em;font-size:13px;background:#080604}
 </style>
+
+<style>
+.access{
+  background:
+    radial-gradient(circle at 50% 0,rgba(155,91,31,.22),transparent 42%),
+    #080604;
+  border-top:1px solid rgba(216,171,91,.35);
+  padding:72px 18px 80px;
+}
+.access-inner{max-width:620px;margin:auto;text-align:center}
+.access-kicker{font-size:11px;letter-spacing:.42em;color:#cda15a;margin-bottom:10px}
+.access h2{
+  margin:0;
+  font-size:46px;
+  font-weight:normal;
+  letter-spacing:.16em;
+}
+.access-sub{
+  color:#d9b36c;
+  font-size:15px;
+  letter-spacing:.18em;
+  margin:7px 0 30px;
+}
+.access-card{
+  border:1px solid rgba(214,163,75,.75);
+  background:rgba(0,0,0,.42);
+  box-shadow:0 0 25px rgba(0,0,0,.45);
+}
+.access-item{
+  padding:23px 15px;
+  border-bottom:1px solid rgba(214,163,75,.4);
+}
+.access-item:last-child{border-bottom:0}
+.access-label{
+  display:block;
+  color:#d9a94f;
+  font-size:11px;
+  letter-spacing:.25em;
+  margin-bottom:8px;
+}
+.access-item strong{
+  display:block;
+  font-size:17px;
+  font-weight:normal;
+  line-height:1.75;
+}
+.access-item small{
+  display:block;
+  color:rgba(255,255,255,.55);
+  margin-top:6px;
+  font-size:11px;
+}
+.map-placeholder{
+  margin:28px 0;
+  min-height:180px;
+  border:1px solid rgba(214,163,75,.55);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  background:
+    linear-gradient(rgba(0,0,0,.58),rgba(0,0,0,.75)),
+    repeating-linear-gradient(45deg,rgba(190,145,65,.08) 0 1px,transparent 1px 16px);
+}
+.map-placeholder span{font-size:31px;letter-spacing:.2em}
+.map-placeholder small{margin-top:10px;color:#bca47c}
+.contact-button{
+  display:inline-flex;
+  min-width:180px;
+  height:48px;
+  align-items:center;
+  justify-content:center;
+  border:1px solid #d7ad61;
+  color:#fff;
+  text-decoration:none;
+  letter-spacing:.2em;
+  background:rgba(80,45,12,.25);
+}
+</style>
+
 </head>
 <body>
-<section class="hero" id="home">
-  <video autoplay muted loop playsinline preload="auto" poster="assets/menu.png">
-    <source src="assets/hero-mobile.mp4" type="video/mp4" media="(max-width:650px)">
-    <source src="assets/hero.mp4" type="video/mp4">
-  </video>
-  <nav class="nav"><a href="#home">HOME</a><a href="#about">ABOUT</a><a href="#menu">MENU</a><a href="#gallery">GALLERY</a><a href="#access">ACCESS</a></nav>
-  <div class="heroContent"><div class="brand"><small>diner</small><strong>Zen</strong></div><div class="tag">BAR &amp; DINING</div><a class="enter" href="#about">ENTER</a></div>
+
+<section class="hero" id="top">
+  <div class="slide active" style="background-image:url('images/door.png')"></div>
+  <div class="slide" style="background-image:url('images/bar.png')"></div>
+  <div class="scroll">DINER ZEN</div>
+  <div class="heroContent">
+    <div class="brand"><small>diner</small><strong>Zen</strong></div>
+    <a class="enter" href="#inside">ENTER</a>
+    <div class="dots"><span class="dot on"></span><span class="dot"></span></div>
+  </div>
 </section>
-<section class="section" id="about"><div class="inner"><div class="title">WELCOME TO DINER ZEN</div><h2>ABOUT</h2><p class="lead">中野駅近くの隠れ家「diner Zen」。落ち着いた夜の時間を楽しめるBAR &amp; DININGです。</p></div></section>
-<section class="section" id="menu"><div class="inner"><div class="title">FOOD &amp; DRINK</div><h2>MENU</h2><img class="menu-img" src="assets/menu.png" alt="diner Zen MENU"></div></section>
-<section class="section" id="gallery"><div class="inner"><div class="title">SIGNATURES</div><h2>GALLERY</h2><div class="gallery"><figure><img src="assets/shikishi1.jpg" alt="サイン色紙"><figcaption>サイン色紙</figcaption></figure><figure><img src="assets/shikishi2.jpg" alt="サイン色紙"><figcaption>サイン色紙</figcaption></figure><figure><img src="assets/shikishi3.jpg" alt="サイン色紙"><figcaption>サイン色紙</figcaption></figure><figure class="wide"><img src="assets/autograph.jpg" alt="店内のサイン色紙"><figcaption>店内に飾られたサイン色紙</figcaption></figure></div></div></section>
-<section class="section access" id="access"><div class="inner"><div class="title">DINER ZEN</div><h2>ACCESS</h2><div class="access-box"><div class="row"><b>AREA</b><span>東京都・中野駅周辺</span></div><div class="row"><b>OPEN</b><span>21:00 ～ 朝方</span></div><div class="row"><b>PHONE</b><span class="tel">090-5586-4488</span></div><div class="row"><b>GUIDE</b><span>隠れ家的な店舗のため、詳しい場所はお電話でご案内します。</span></div></div></div></section>
-<footer class="footer">© diner Zen BAR &amp; DINING</footer>
+
+<main id="inside" class="content">
+  <!-- ENTER後：今回追加されたMENU画像 -->
+  <section class="imageSection">
+    <img src="images/menu.png" alt="diner Zen MENU">
+  </section>
+
+  <!-- その下に今回追加された色紙・店内画像 -->
+  <section class="imageSection">
+    <img src="images/autograph.png" alt="diner Zen 店内の色紙">
+  </section>
+
+
+  <!-- ACCESS / HOURS -->
+  <section class="access">
+    <div class="access-inner">
+      <div class="access-kicker">DINER ZEN</div>
+      <h2>ACCESS</h2>
+      <div class="access-sub">アクセス・営業時間</div>
+
+      <div class="access-card">
+        <div class="access-item">
+          <span class="access-label">ADDRESS</span>
+          <strong>東京都<br>中野駅周辺</strong>
+        </div>
+
+        <div class="access-item">
+          <span class="access-label">OPEN</span>
+          <strong>21:00 ～ 朝方</strong>
+          <small>※営業時間は変更になる場合があります</small>
+        </div>
+
+        <div class="access-item">
+          <span class="access-label">CLOSED</span>
+          <strong>不定期</strong>
+        </div>
+
+        <div class="access-item">
+          <span class="access-label">ACCESS</span>
+          <strong>中野駅周辺</strong>
+          <small>当店は隠れ家的な店舗ですので、<br>お電話で場所をご案内します。</small>
+        </div>
+
+        <div class="access-item">
+          <span class="access-label">PHONE</span>
+          <strong>〇〇〇</strong>
+          <small>ご来店の際はお電話ください。</small>
+        </div>
+      </div>
+
+      <div class="map-placeholder">
+        <span>MAP</span>
+        <small>Google Mapsをここに設置できます</small>
+      </div>
+
+      <a class="contact-button" href="#top">TOPへ戻る</a>
+    </div>
+  </section>
+
+  <a class="back" href="#top">↑ TOP</a>
+</main>
+
+<script>
+const slides=document.querySelectorAll('.slide');
+const dots=document.querySelectorAll('.dot');
+let n=0;
+setInterval(()=>{
+  slides[n].classList.remove('active'); dots[n].classList.remove('on');
+  n=(n+1)%slides.length;
+  slides[n].classList.add('active'); dots[n].classList.add('on');
+},5000);
+</script>
 </body>
 </html>
